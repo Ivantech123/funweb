@@ -280,3 +280,337 @@ header {
         padding: 20px;
     }
 }
+
+/* Стили для секции эпизодов */
+.episodes {
+    background-color: #0a0a0a;
+    padding: 80px 0;
+    position: relative;
+}
+
+.episodes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.pinimg.com/originals/49/b7/6e/49b76e98d2adccbaea46a0ce1e0b9b13.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    filter: blur(8px);
+    z-index: 0;
+}
+
+.episode-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.episode-card {
+    display: flex;
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.episode-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.episode-card:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.episode-card.appear {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.episode-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(196, 18, 18, 0.3);
+}
+
+.episode-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    background-color: #c41212;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Exo 2', sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.episode-info {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.episode-info h3 {
+    font-family: "Dancing Script", cursive;
+    font-size: 28px;
+    color: #c41212;
+    margin-bottom: 10px;
+}
+
+.episode-info p {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+/* Стили для галереи */
+.gallery {
+    background-color: #000;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:nth-child(1) {
+    background-image: url('https://i.pinimg.com/originals/49/b7/6e/49b76e98d2adccbaea46a0ce1e0b9b13.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.gallery-item:nth-child(2) {
+    background-image: url('https://i.pinimg.com/originals/49/b7/6e/49b76e98d2adccbaea46a0ce1e0b9b13.jpg');
+    background-size: cover;
+    background-position: top;
+    transition-delay: 0.2s;
+}
+
+.gallery-item:nth-child(3) {
+    background-image: url('https://i.pinimg.com/originals/49/b7/6e/49b76e98d2adccbaea46a0ce1e0b9b13.jpg');
+    background-size: cover;
+    background-position: bottom;
+    transition-delay: 0.4s;
+}
+
+.gallery-item.appear {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.gallery-item:hover {
+    box-shadow: 0 15px 30px rgba(196, 18, 18, 0.3);
+}
+
+.gallery-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-content {
+    transform: translateY(0);
+}
+
+.gallery-content h3 {
+    font-family: "Dancing Script", cursive;
+    font-size: 24px;
+    color: #c41212;
+    margin-bottom: 5px;
+}
+
+.gallery-content p {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Стили для секции цитат */
+.quote-section {
+    background-color: #0a0a0a;
+    padding: 100px 0;
+    position: relative;
+}
+
+.quote {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.quote.appear {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.quote.pulse {
+    animation: pulse 1s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.quote blockquote {
+    font-family: "Dancing Script", cursive;
+    font-size: 32px;
+    color: white;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.quote blockquote::before,
+.quote blockquote::after {
+    content: '"';
+    font-size: 60px;
+    color: #c41212;
+    position: absolute;
+    opacity: 0.5;
+}
+
+.quote blockquote::before {
+    top: -20px;
+    left: -20px;
+}
+
+.quote blockquote::after {
+    bottom: -40px;
+    right: -20px;
+}
+
+.quote cite {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 18px;
+    color: #c41212;
+    font-style: italic;
+}
+
+/* Стили для футера */
+footer {
+    background-color: #000;
+    padding: 30px 0;
+    border-top: 1px solid #333;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    color: #777;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #222;
+    color: #c41212;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-link:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.social-link:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.social-link:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.social-link.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.social-link:hover {
+    background-color: #c41212;
+    color: white;
+    transform: translateY(-5px);
+}
+
+/* Дополнительные медиа-запросы */
+@media (max-width: 768px) {
+    .episode-card {
+        flex-direction: column;
+    }
+    
+    .episode-number {
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .quote blockquote {
+        font-size: 24px;
+    }
+    
+    footer .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

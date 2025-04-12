@@ -57,11 +57,88 @@
         </div>
     </section>
     
+    <section class="episodes">
+        <div class="container">
+            <h2 class="section-title">Эпизоды</h2>
+            <div class="episode-list">
+                <div class="episode-card">
+                    <div class="episode-number">01</div>
+                    <div class="episode-info">
+                        <h3>Открытия</h3>
+                        <p>В 1950-х годах сирота Бет Хармон обнаруживает удивительный талант к шахматам, играя с шахматистом в подвале приюта.</p>
+                    </div>
+                </div>
+                <div class="episode-card">
+                    <div class="episode-number">02</div>
+                    <div class="episode-info">
+                        <h3>Обмен</h3>
+                        <p>Восемь лет спустя Бет соревнуется в турнире в Кентукки. Она встречает много новых людей, включая шахматного соперника, который привлекает её внимание.</p>
+                    </div>
+                </div>
+                <div class="episode-card">
+                    <div class="episode-number">03</div>
+                    <div class="episode-info">
+                        <h3>Двойные пешки</h3>
+                        <p>Бет и её приёмная мать переезжают в новый дом. Она начинает адаптироваться к новой нормальной жизни, но не может подавить свою тягу к шахматам.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Галерея</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <div class="gallery-content">
+                        <h3>Бет за шахматной доской</h3>
+                        <p>Напряженный момент во время важной партии</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-content">
+                        <h3>Приют Метуэн</h3>
+                        <p>Место, где началась история Бет</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-content">
+                        <h3>Турнир в Москве</h3>
+                        <p>Кульминация шахматной карьеры Бет</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote">
+                <blockquote>
+                    <p>Шахматы — это не просто знание правил и нескольких ходов. Это осознание того, что иногда правила нужно нарушать.</p>
+                    <cite>— Бет Хармон</cite>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 The Queen's Gambit | Netflix</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+    
     <script>
         // Анимация при прокрутке
         window.addEventListener('scroll', function() {
             const scrollIndicator = document.querySelector('.scroll-indicator');
-            const contentElements = document.querySelectorAll('.section-title, .info-card, .character-card');
+            const contentElements = document.querySelectorAll('.section-title, .info-card, .character-card, .episode-card, .gallery-item, .quote, .social-links a');
             
             // Скрываем индикатор прокрутки при прокрутке
             if (window.scrollY > 100) {
@@ -79,7 +156,41 @@
                     element.classList.add('appear');
                 }
             });
+            
+            // Параллакс-эффект для галереи
+            const gallerySection = document.querySelector('.gallery');
+            if (gallerySection) {
+                const scrollPosition = window.scrollY;
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                
+                galleryItems.forEach((item, index) => {
+                    const speed = 0.1 + (index * 0.05);
+                    const yPos = -(scrollPosition * speed);
+                    item.style.transform = `translateY(${yPos}px)`;
+                });
+            }
+            
+            // Эффект вращения для эпизодов
+            const episodeNumbers = document.querySelectorAll('.episode-number');
+            episodeNumbers.forEach(number => {
+                const rect = number.getBoundingClientRect();
+                const centerY = window.innerHeight / 2;
+                const distanceFromCenter = (rect.top + rect.height / 2 - centerY) / centerY;
+                const rotation = distanceFromCenter * 15; // Угол вращения
+                number.style.transform = `rotate(${rotation}deg)`;
+            });
         });
+        
+        // Анимация пульсации цитаты
+        const quote = document.querySelector('.quote');
+        if (quote) {
+            setInterval(() => {
+                quote.classList.add('pulse');
+                setTimeout(() => {
+                    quote.classList.remove('pulse');
+                }, 1000);
+            }, 5000);
+        }
     </script>
 </body>
 </html>
