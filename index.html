@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>The Queen's Gambit</title>
+</head>
+<body>
+    <header>
+        <img src="https://i.pinimg.com/originals/49/b7/6e/49b76e98d2adccbaea46a0ce1e0b9b13.jpg" class="main_img">
+        <div class="name">
+            <p class="the">The</p>
+            <p class="queen">Queen's</p>
+            <p class="gambit">Gambit</p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span class="fa-solid fa-chevron-down"></span>
+            </div>
+        </div>
+    </header>
+    
+    <section class="content">
+        <div class="container">
+            <h2 class="section-title">О сериале</h2>
+            <div class="info-card">
+                <p>«Ход королевы» — американский драматический мини-сериал, основанный на одноимённом романе Уолтера Тевиса 1983 года.</p>
+                <p>История о девочке-сироте, которая становится шахматным гением, но при этом борется с эмоциональными проблемами, зависимостью и давлением славы.</p>
+            </div>
+            
+            <h2 class="section-title">Главные герои</h2>
+            <div class="character-cards">
+                <div class="character-card">
+                    <div class="character-info">
+                        <h3>Бет Хармон</h3>
+                        <p>Шахматный вундеркинд, борющийся с зависимостью</p>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-info">
+                        <h3>Джолин</h3>
+                        <p>Подруга Бет из приюта</p>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-info">
+                        <h3>Бенни Уоттс</h3>
+                        <p>Чемпион США по шахматам и наставник Бет</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Анимация при прокрутке
+        window.addEventListener('scroll', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            const contentElements = document.querySelectorAll('.section-title, .info-card, .character-card');
+            
+            // Скрываем индикатор прокрутки при прокрутке
+            if (window.scrollY > 100) {
+                scrollIndicator.classList.add('hidden');
+            } else {
+                scrollIndicator.classList.remove('hidden');
+            }
+            
+            // Анимация появления элементов при прокрутке
+            contentElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('appear');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
