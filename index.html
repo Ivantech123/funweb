@@ -15,6 +15,28 @@
             <p class="queen">Queen's</p>
             <p class="gambit">Gambit</p>
         </div>
+        
+        <div class="header-cards">
+            <div class="header-card">
+                <div class="header-card-content">
+                    <h3>Шахматный гений</h3>
+                    <p>История восхождения Бет Хармон</p>
+                </div>
+            </div>
+            <div class="header-card">
+                <div class="header-card-content">
+                    <h3>7 эпизодов</h3>
+                    <p>Мини-сериал от Netflix</p>
+                </div>
+            </div>
+            <div class="header-card">
+                <div class="header-card-content">
+                    <h3>Драма, триллер</h3>
+                    <p>Жанры сериала</p>
+                </div>
+            </div>
+        </div>
+        
         <div class="scroll-indicator">
             <div class="mouse">
                 <div class="wheel"></div>
@@ -164,9 +186,12 @@
                 const galleryItems = document.querySelectorAll('.gallery-item');
                 
                 galleryItems.forEach((item, index) => {
-                    const speed = 0.1 + (index * 0.05);
+                    // Уменьшаем скорость параллакса в 5 раз
+                    const speed = (0.02 + (index * 0.01));
                     const yPos = -(scrollPosition * speed);
-                    item.style.transform = `translateY(${yPos}px)`;
+                    // Ограничиваем максимальное смещение до 50px
+                    const limitedYPos = Math.max(-50, Math.min(50, yPos));
+                    item.style.transform = `translateY(${limitedYPos}px)`;
                 });
             }
             
